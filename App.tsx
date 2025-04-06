@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, Pressable, Image, Platform } from 'react-native';
+import { View, Text, StyleSheet, Pressable, Image, Platform, Linking } from 'react-native';
 
 // Remove direct image import
 // Instead, we'll use require directly in the component
@@ -51,6 +51,26 @@ export function App() {
         >
           <Text style={styles.buttonText}>Get New Joke</Text>
         </Pressable>
+      </View>
+    <View style={styles.footer}>
+        <Text style={styles.footerText}>
+          Jokes sourced from{' '}
+          <Text 
+            style={styles.link}
+            onPress={() => Linking.openURL('https://github.com/AlexLakatos/computer-puns')}
+          >
+            AlexLakatos/computer-puns
+          </Text>
+        </Text>
+        <Text style={styles.footerText}>
+          Licensed under{' '}
+          <Text 
+            style={styles.link}
+            onPress={() => Linking.openURL('https://www.gnu.org/licenses/gpl-3.0.en.html')}
+          >
+            GPL-3.0
+          </Text>
+        </Text>
       </View>
     </View>
   );
@@ -113,5 +133,19 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 16,
+  },
+  footer: {
+    padding: 20,
+    alignItems: 'center',
+  },
+  footerText: {
+    color: '#666',
+    fontSize: 14,
+    textAlign: 'center',
+    marginVertical: 2,
+  },
+  link: {
+    color: '#3498db',
+    textDecorationLine: 'underline',
   }
 });
